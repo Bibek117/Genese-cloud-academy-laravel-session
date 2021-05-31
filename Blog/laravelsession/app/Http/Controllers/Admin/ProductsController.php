@@ -7,6 +7,8 @@ use App\Http\Requests\StorePostRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\product;
+
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Illuminate\Support\Facades\Redis;
 
 class ProductsController extends Controller
@@ -44,6 +46,7 @@ class ProductsController extends Controller
      */
     public function store(StorePostRequest $request)
     {
+        return $request;
         // $this->validate($request,[
         //     // 'product_name'=>'required|max:255|unique:products',
         //     'product_name'=>'required|max:100',
@@ -52,12 +55,16 @@ class ProductsController extends Controller
         //     'category_id'=>'required'
         // ]);
       //  $validated = $request->validated();
-     
+       
         $product = new product;
         $product->product_name = $request->input('product_name');
         $product->product_desc = $request->input('product_desc');
+        if($request->hasFile('image_upload')){
+            $product->image =$request ->file('image_upload')->store('images');
+        }
         $product->price = $request->input('price');
         $product->category_id =$request->input('category_id');
+        return $product;
         if($product->save()){
             // return redirect('/admin/products');  //->route('/admin/products');
             return redirect()->route('product_list');

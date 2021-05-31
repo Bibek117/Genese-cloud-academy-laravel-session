@@ -26,6 +26,7 @@ class StorePostRequest extends FormRequest
         return [
             'product_name'=>'required|max:100',
             'product_desc'=>'required',
+            // 'image'=>'required',
             'price'=>'required',
             'category_id'=>'required'
         ];

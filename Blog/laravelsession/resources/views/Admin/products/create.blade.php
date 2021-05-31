@@ -12,7 +12,7 @@
                 </ul>
             </div>
         @endif --}}
-                <form style="padding: 10px;border:2px solid black;" action="/admin/products/store" method="POST">
+                <form  enctype="multipart/form-data" action="/admin/products/store" method="POST" file="true" >
                     @csrf
                     {{-- <x-forms.input type="text" name="full_name"/> --}}
                     <h1>Enter a new product</h1>
@@ -25,11 +25,13 @@
                     Product Description : <textarea class="form-control" name="product_desc" id="" cols="30" rows="10">{{old('product_desc')}}</textarea>
                             @error('product_desc')
                               <div class="alert alert-danger">{{$message}}</div>
-                            @enderror<br>
+                            @enderror<br>  
+                    Image : <input type="file" name="image_upload" id=""><br>
                     Price : <input type="text" class="form-control"  value="{{old('price')}}" name="price" id="">
                              @error('price')
                                  <div class="alert alert-danger">{{$message}}</div>
                              @enderror<br><br>
+                  
                     Category : 
                     <x-forms.select name="category_id" class="form-control">
                         <option value="" selected disabled hidden >Category</option>
@@ -38,15 +40,15 @@
                         @endforeach
                     
                     </x-forms.select> 
-                     @error('category_id')
+                     {{-- @error('category_id')
                         <div class="alert alert-danger">{{$message}}</div>
-                    @enderror<br><br>
+                    @enderror<br><br> --}}
                         {{-- <option value="" selected disabled hidden >Category</option>
                         @foreach ($categories as $category)
                             <option value="{{$category->id}}">{{$category->name}}</option>
                         @endforeach
                     </select> --}}
-                    <input class="btn btn-primary" type="submit" value="save" name="submit">
+                    <input class="btn btn-primary" type="submit" value="submit" name="submit">
                 </form>
             </div>
         </div>

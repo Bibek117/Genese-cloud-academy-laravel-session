@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class product extends Model
 {
@@ -17,7 +18,7 @@ class product extends Model
         'category_id',
     ];
     protected $attributes = [
-        'image' => " ",
+        'image' => "",
     ];
     protected $with =['category'];  //for faster
 
