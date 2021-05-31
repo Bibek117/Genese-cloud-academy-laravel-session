@@ -15,14 +15,7 @@ use App\Models\Category;
 |
 */
 
-Route::get('/', function () {
-    $categories = Category::all();
-    $allpost =  Post::latest()->get();
-    // return $allpost;
-    return view('mainpage',['posts'=>$allpost,'categories'=>$categories]);
-});
+Route::get('/',[App\Http\Controllers\PagesController::class,'home'])->name('homepage');
 
-Route::get('/index/{id}',function($id){
-    $post= Post::find($id);
-    return view('index',['post'=>$post]);
-});
+Route::get('/index/{id}',[App\Http\Controllers\PagesController::class,'index'])->name('singleproduct');
+
