@@ -1,0 +1,40 @@
+body{
+    text-align: center;
+    box-sizing: border-box;
+    background: #8e44ad;
+    font-size: 1.5rem;
+}
+.container{
+    
+    width:80%;
+    color:white;
+    border-radius: 10px;
+    margin: 20px auto;
+ padding:20px;
+}
+a{
+    color:red;
+    font-size:2rem;
+}
+.post{
+    border-radius: 20px;
+    width:80%;
+    margin:20px auto;
+    background: #8e44ad;
+    box-shadow:  6px 6px 6px #552968,
+             -6px -6px 6px #c75ff2;
+    padding:10px;
+}
+.post h2{
+    text-align: center;
+    color:yellow;
+}
+.post > p{
+    text-align: left;
+    font-size: 0.9rem;
+}
+.post .post-content{
+   text-align: left;
+    width:70%;
+    margin-left: 200px;
+}
