@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\product;
-
-class ProductsController extends Controller
+class ProductpageController extends Controller
 {
+
     //homepage
     public function index(){
         $product_list = product::latest()->get();
@@ -24,5 +24,4 @@ class ProductsController extends Controller
         return view('product1',['products'=>$prod]);
     }
 }
-
 

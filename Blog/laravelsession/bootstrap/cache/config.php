@@ -36,10 +36,11 @@
       19 => 'Illuminate\\Translation\\TranslationServiceProvider',
       20 => 'Illuminate\\Validation\\ValidationServiceProvider',
       21 => 'Illuminate\\View\\ViewServiceProvider',
-      22 => 'App\\Providers\\AppServiceProvider',
-      23 => 'App\\Providers\\AuthServiceProvider',
-      24 => 'App\\Providers\\EventServiceProvider',
-      25 => 'App\\Providers\\RouteServiceProvider',
+      22 => 'Intervention\\Image\\ImageServiceProvider',
+      23 => 'App\\Providers\\AppServiceProvider',
+      24 => 'App\\Providers\\AuthServiceProvider',
+      25 => 'App\\Providers\\EventServiceProvider',
+      26 => 'App\\Providers\\RouteServiceProvider',
     ),
     'aliases' => 
     array (
@@ -79,6 +80,7 @@
       'URL' => 'Illuminate\\Support\\Facades\\URL',
       'Validator' => 'Illuminate\\Support\\Facades\\Validator',
       'View' => 'Illuminate\\Support\\Facades\\View',
+      'Image' => 'Intervention\\Image\\Facades\\Image',
     ),
   ),
   'auth' => 
@@ -666,6 +668,10 @@
     'remote_sites_path' => '',
     'local_sites_path' => '',
     'housekeeping_endpoint_prefix' => '_ignition',
+  ),
+  'image' => 
+  array (
+    'driver' => 'gd',
   ),
   'clockwork' => 
   array (

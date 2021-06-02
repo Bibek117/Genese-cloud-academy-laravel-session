@@ -7,6 +7,7 @@ use App\Http\Requests\StorePostRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\product;
+use Intervention\Image\Facades\Image;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Illuminate\Support\Facades\Redis;
@@ -44,9 +45,10 @@ class ProductsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePostRequest $request)
+    // public function store(StorePostRequest $request)
+    public function store(Request $request)
     {
-        return $request;
+        //@dd($request); 
         // $this->validate($request,[
         //     // 'product_name'=>'required|max:255|unique:products',
         //     'product_name'=>'required|max:100',
@@ -60,11 +62,17 @@ class ProductsController extends Controller
         $product->product_name = $request->input('product_name');
         $product->product_desc = $request->input('product_desc');
         if($request->hasFile('image_upload')){
-            $product->image =$request ->file('image_upload')->store('images');
+            $name = $request->file('image_upload')->getClientOriginalName();
+            $request ->file('image_upload')->storeAs('public/images',$name);
+            // $product->image = "storage/images/".$name;
+            // $image_resize = Image::make(storage_path('app/public/images/'.$name))->resize(550,750);
+            // $image_resize->save(storage_path('app/public/images/thumbnail/'.$name));
+            // Image::make(storage_path('app/public/images/'.$name))->resize(550,750)->save(storage_path('app\public\images\thumbnail\\'.$name));
+            image_crop($name, 550, 750);
+            $product->image = $name;
         }
         $product->price = $request->input('price');
         $product->category_id =$request->input('category_id');
-        return $product;
         if($product->save()){
             // return redirect('/admin/products');  //->route('/admin/products');
             return redirect()->route('product_list');

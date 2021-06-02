@@ -26,15 +26,18 @@
     22 => 'Facade\\Ignition\\IgnitionServiceProvider',
     23 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
     24 => 'Fruitcake\\Cors\\CorsServiceProvider',
-    25 => 'Clockwork\\Support\\Laravel\\ClockworkServiceProvider',
-    26 => 'Laravel\\Sail\\SailServiceProvider',
-    27 => 'Laravel\\Tinker\\TinkerServiceProvider',
-    28 => 'Carbon\\Laravel\\ServiceProvider',
-    29 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
-    30 => 'App\\Providers\\AppServiceProvider',
-    31 => 'App\\Providers\\AuthServiceProvider',
-    32 => 'App\\Providers\\EventServiceProvider',
-    33 => 'App\\Providers\\RouteServiceProvider',
+    25 => 'Intervention\\Image\\ImageServiceProvider',
+    26 => 'Clockwork\\Support\\Laravel\\ClockworkServiceProvider',
+    27 => 'Laravel\\Breeze\\BreezeServiceProvider',
+    28 => 'Laravel\\Sail\\SailServiceProvider',
+    29 => 'Laravel\\Tinker\\TinkerServiceProvider',
+    30 => 'Carbon\\Laravel\\ServiceProvider',
+    31 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
+    32 => 'Intervention\\Image\\ImageServiceProvider',
+    33 => 'App\\Providers\\AppServiceProvider',
+    34 => 'App\\Providers\\AuthServiceProvider',
+    35 => 'App\\Providers\\EventServiceProvider',
+    36 => 'App\\Providers\\RouteServiceProvider',
   ),
   'eager' => 
   array (
@@ -51,13 +54,15 @@
     10 => 'Facade\\Ignition\\IgnitionServiceProvider',
     11 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
     12 => 'Fruitcake\\Cors\\CorsServiceProvider',
-    13 => 'Clockwork\\Support\\Laravel\\ClockworkServiceProvider',
-    14 => 'Carbon\\Laravel\\ServiceProvider',
-    15 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
-    16 => 'App\\Providers\\AppServiceProvider',
-    17 => 'App\\Providers\\AuthServiceProvider',
-    18 => 'App\\Providers\\EventServiceProvider',
-    19 => 'App\\Providers\\RouteServiceProvider',
+    13 => 'Intervention\\Image\\ImageServiceProvider',
+    14 => 'Clockwork\\Support\\Laravel\\ClockworkServiceProvider',
+    15 => 'Carbon\\Laravel\\ServiceProvider',
+    16 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
+    17 => 'Intervention\\Image\\ImageServiceProvider',
+    18 => 'App\\Providers\\AppServiceProvider',
+    19 => 'App\\Providers\\AuthServiceProvider',
+    20 => 'App\\Providers\\EventServiceProvider',
+    21 => 'App\\Providers\\RouteServiceProvider',
   ),
   'deferred' => 
   array (
@@ -177,6 +182,7 @@
     'translation.loader' => 'Illuminate\\Translation\\TranslationServiceProvider',
     'validator' => 'Illuminate\\Validation\\ValidationServiceProvider',
     'validation.presence' => 'Illuminate\\Validation\\ValidationServiceProvider',
+    'Laravel\\Breeze\\Console\\InstallCommand' => 'Laravel\\Breeze\\BreezeServiceProvider',
     'Laravel\\Sail\\Console\\InstallCommand' => 'Laravel\\Sail\\SailServiceProvider',
     'Laravel\\Sail\\Console\\PublishCommand' => 'Laravel\\Sail\\SailServiceProvider',
     'command.tinker' => 'Laravel\\Tinker\\TinkerServiceProvider',
@@ -217,6 +223,9 @@
     array (
     ),
     'Illuminate\\Validation\\ValidationServiceProvider' => 
+    array (
+    ),
+    'Laravel\\Breeze\\BreezeServiceProvider' => 
     array (
     ),
     'Laravel\\Sail\\SailServiceProvider' => 

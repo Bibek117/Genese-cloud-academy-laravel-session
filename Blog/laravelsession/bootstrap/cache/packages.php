@@ -24,6 +24,17 @@
       0 => 'Fruitcake\\Cors\\CorsServiceProvider',
     ),
   ),
+  'intervention/image' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Intervention\\Image\\ImageServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Image' => 'Intervention\\Image\\Facades\\Image',
+    ),
+  ),
   'itsgoingd/clockwork' => 
   array (
     'providers' => 
@@ -33,6 +44,13 @@
     'aliases' => 
     array (
       'Clockwork' => 'Clockwork\\Support\\Laravel\\Facade',
+    ),
+  ),
+  'laravel/breeze' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Laravel\\Breeze\\BreezeServiceProvider',
     ),
   ),
   'laravel/sail' => 
