@@ -107,9 +107,17 @@ class OrderItemController extends Controller
      * @param  \App\Models\OrderItem  $orderItem
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, OrderItem $orderItem)
+    public function update(Request $request, $id)
     {
-        //
+        $product = OrderItem::find($id);
+        //return $item;
+        $product->quantity = $request->input('quantity');
+        $product->total = $product->quantity * $product->product_price;
+        $product->save();
+        $product->order->sub_total = ($product->order->sub_total - $product->product_price + $product->total);
+        $product->order->total_price = ($product->order->total_price - $product->product_price + $product->total);
+        $product->order->save();
+        return redirect()->route('order.index')->with('message','Quantity updated');
     }
 
     /**
@@ -123,8 +131,8 @@ class OrderItemController extends Controller
     {
          $item = OrderItem::find($id);
 
-         $item->order->sub_total -=$item->product_price;
-         $item->order->total_price -=$item->product_price; 
+         $item->order->sub_total -=$item->total;
+         $item->order->total_price -=$item->total; 
          $item->order->save();
          $item->delete();
          return redirect()->route('order.index');

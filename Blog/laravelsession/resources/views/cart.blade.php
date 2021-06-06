@@ -24,6 +24,11 @@
             <div class="col-12">
                 <!-- Shopping Summery -->
                 <table class="table shopping-summery">
+                    @if(session()->has('message'))
+                      <div class="alert alert-success">
+                        {{ session()->get('message') }}
+                          </div>
+                   @endif
                     <thead>
                         <tr class="main-hading">
                             <th>PRODUCT</th>
@@ -45,17 +50,25 @@
                             <td class="price" data-title="Price"><span>{{$item->product_price}} </span></td>
                             <td class="qty" data-title="Qty"><!-- Input Order -->
                                 <div class="input-group">
-                                    <div class="button minus">
+                                    <form action="{{route('cart.update',$item->id)}}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <input type="number" min="1" max="50" name="quantity" value="{{$item->quantity}}">
+                                        <input type="submit" class="btn btn-dark" value="Update">
+                                    </form>
+                                   
+                                    {{-- <div class="button minus">
                                         <button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
                                             <i class="ti-minus"></i>
                                         </button>
                                     </div>
-                                    <input type="text" name="quant[1]" class="input-number"  data-min="1" data-max="100" value="1">
+                                    <form action="{{route()}}"></form>
+                                    <input type="text" name="quant[1]" class="input-number"  data-min="1" data-max="30" value="{{$item->quantity}}">
                                     <div class="button plus">
                                         <button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[1]">
                                             <i class="ti-plus"></i>
                                         </button>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <!--/ End Input Order -->
                             </td>
