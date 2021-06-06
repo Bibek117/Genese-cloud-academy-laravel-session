@@ -58,10 +58,10 @@ require __DIR__.'/auth.php';
 // Route::get('/product', function () {
 //     return view('product1');  //product1.blade.php
 // });
-Route::get('/', function () {
-    $product_list = product::all();
-    return view('homepage',['productpass'=>$product_list]);  //products.blade.php
-});
+// Route::get('/', function () {
+//     $product_list = product::all();
+//     return view('homepage',['productpass'=>$product_list]);  //products.blade.php
+// });
 
 // Route::get('/product/{prod}', function (product $prod) {  //route model binding
 //     //$product = product::find($id);  //finds the matching product id and send
@@ -144,22 +144,34 @@ Route::get('/', function () {
 //});
 
 //products route
- Route::get('/home-page',[ProductpageController::class,'index']);
+ Route::get('/',[ProductpageController::class,'index']);
  Route::get('/category/{category}',[ProductpageController::class,'cat']);
  Route::get('/product/{prod}',[ProductpageController::class,'prodetails']);
 
 
  //admin routing
-
- Route::middleware(['auth'])->group(function (){
-      Route::get('/admin/products',[App\Http\Controllers\Admin\ProductsController::class,'index'])->name('product_list');  //name for route
-      Route::get('/admin/products/create',[App\Http\Controllers\Admin\ProductsController::class,'create'])-> name('product_create');
-      Route::post('/admin/products/store',[App\Http\Controllers\Admin\ProductsController::class,'store']);
-      Route::get('/admin/products/edit/{product}',[App\Http\Controllers\Admin\ProductsController::class,'edit'])->name('product_edit');
-      Route::post('/admin/products/update/{product}',[App\Http\Controllers\Admin\ProductsController::class,'update'])->name('product_update');
-      Route::get('/admin/products/delete/{product}',[App\Http\Controllers\Admin\ProductsController::class,'destroy'])->name('product_delete');
+//adding prefix admin adds /admin/ to all prefix of routes
+//also name can we added and will be applied to all prefixes
+//  Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function (){
+ Route::middleware(['auth'])->prefix('admin')->group(function (){
+      Route::get('products',[App\Http\Controllers\Admin\ProductsController::class,'index'])->name('product_list');  //name for route
+      Route::get('products/create',[App\Http\Controllers\Admin\ProductsController::class,'create'])-> name('product_create');
+      Route::post('products/store',[App\Http\Controllers\Admin\ProductsController::class,'store']);
+      Route::get('products/edit/{product}',[App\Http\Controllers\Admin\ProductsController::class,'edit'])->name('product_edit');
+      Route::post('products/update/{product}',[App\Http\Controllers\Admin\ProductsController::class,'update'])->name('product_update');
+      Route::get('products/delete/{product}',[App\Http\Controllers\Admin\ProductsController::class,'destroy'])->name('product_delete');
+      Route::resource('categories',App\Http\Controllers\Admin\CategoriesController::class);
+     
  });
-
-
+//only two allowed
+ //Route::resource('categories',App\Http\Controllers\Admin\CategoriesController::class)->only(['show','index']);
+ //except
+ //Route::resource('photos', PhotoController::class)->except(['create', 'store', 'update', 'destroy']);
 
 Route::get('/admin/dashboard',[App\Http\Controllers\Admin\DashboardController::class,'index'])->name('admin_dashboard')->middleware('auth');
+
+Route::get('search',[App\Http\Controllers\SearchController::class,'search'])->name('search');
+
+Route::resource('order',App\Http\Controllers\OrderController::class)->middleware('auth');
+
+ Route::resource('cart',App\Http\Controllers\OrderItemController::class)->middleware('auth');

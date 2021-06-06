@@ -75,6 +75,13 @@
               </nav>
             </li>
             <li class="nav-item">
+              <a href="" class="nav-link with-sub"><i class="typcn typcn-document"></i> Category</a>
+              <nav class="az-menu-sub">
+                <a href="{{ route('categories.create') }}" class="nav-link">Create</a>
+                <a href="{{ route('categories.index') }}" class="nav-link">List</a>
+              </nav>
+            </li>
+            <li class="nav-item">
               <a href="chart-chartjs.html" class="nav-link"><i class="typcn typcn-chart-bar-outline"></i> Charts</a>
             </li>
             <li class="nav-item">

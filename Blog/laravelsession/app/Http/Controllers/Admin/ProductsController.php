@@ -68,7 +68,7 @@ class ProductsController extends Controller
             // $image_resize = Image::make(storage_path('app/public/images/'.$name))->resize(550,750);
             // $image_resize->save(storage_path('app/public/images/thumbnail/'.$name));
             // Image::make(storage_path('app/public/images/'.$name))->resize(550,750)->save(storage_path('app\public\images\thumbnail\\'.$name));
-            image_crop($name, 550, 750);
+            //image_crop($name, 550, 750);
             $product->image = $name;
         }
         $product->price = $request->input('price');
