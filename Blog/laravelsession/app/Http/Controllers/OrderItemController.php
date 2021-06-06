@@ -7,6 +7,7 @@ use App\Models\OrderItem;
 use App\Models\product;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Contracts\Session\Session;
 
 class OrderItemController extends Controller
 {
@@ -15,9 +16,9 @@ class OrderItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        
     }
 
     /**
@@ -39,7 +40,9 @@ class OrderItemController extends Controller
     public function store(Request $request)
     {
         //return $request;
-        $order_id = session('order_id',0);
+       // $order_id = session('order_id',0);
+        $order_id = request()->session()->get('order_id', '0');
+        // return $order_id;
         //return $order_id;
         // $user = Auth::user();
         // $address = $user->address;
@@ -70,7 +73,7 @@ class OrderItemController extends Controller
 
         $order_update =  Order::find($order_id);
         $order_update->sub_total +=$order_item->total;
-        $order_update->total_price +=$order_item->total;
+        $order_update->total_price +=($order_item->total+ $order_update->shipping_price - $order_update->discount);
         $order_update->save();
         return redirect(route('order.index'));
     }
@@ -115,8 +118,16 @@ class OrderItemController extends Controller
      * @param  \App\Models\OrderItem  $orderItem
      * @return \Illuminate\Http\Response
      */
-    public function destroy(OrderItem $orderItem)
+    //public function destroy(OrderItem $orderItem)
+    public function destroy($id)
     {
-        //
+         $item = OrderItem::find($id);
+
+         $item->order->sub_total -=$item->product_price;
+         $item->order->total_price -=$item->product_price; 
+         $item->order->save();
+         $item->delete();
+         return redirect()->route('order.index');
+
     }
 }

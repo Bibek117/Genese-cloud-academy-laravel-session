@@ -9,7 +9,13 @@ class OrderItem extends Model
 {
     use HasFactory;
 
-    protected function product(){
+     protected $with =['product','order'];
+
+    public function product(){
        return $this->belongsTo(product::class);
     }
+    public function order(){
+        return $this->belongsTo(Order::class);
+    }
 }
+ 

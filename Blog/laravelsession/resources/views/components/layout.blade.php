@@ -263,7 +263,7 @@
 													<li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
 														<ul class="dropdown">
 															<li><a href="shop-grid.html">Shop Grid</a></li>
-															<li><a href="cart.html">Cart</a></li>
+															<li><a href="{{route('order.index')}}">Cart</a></li>
 															<li><a href="checkout.html">Checkout</a></li>
 														</ul>
 													</li>

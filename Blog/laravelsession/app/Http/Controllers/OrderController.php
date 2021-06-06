@@ -16,9 +16,16 @@ class OrderController extends Controller
     public function index()
     {
         $order_id = session('order_id',0);
-        $order = Order::find($order_id);
+        //return $order_id;
+         //$order = Order::find($order_id);
         $order_item = OrderItem::whereOrderId($order_id)->get();
-        return view('cart',['orderitem'=>$order_item,'order'=>$order]);
+        if(count($order_item) >= 1){
+               return view('cart',['orderitem'=>$order_item]);
+        }else{
+            return view('emptycart');
+        }
+     
+        // return view('cart',['orderitem'=>$order_item,'order'=>$order]);
 
     }
 
@@ -85,6 +92,6 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+       
     }
 }

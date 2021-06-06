@@ -27,8 +27,7 @@ class UpdateCategoriesTable extends Migration
     public function down()
     {
         Schema::table('categories', function (Blueprint $table) {
-            $table->string('slug');
-            $table->unsignedBigInteger('parent_id');
+            $table->dropColumn(array('slug','parent_id'));
         });
     }
 }
