@@ -26,6 +26,7 @@
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
 
+
             <!-- Password -->
             <div class="mt-4">
                 <x-label for="password" :value="__('Password')" />
@@ -45,6 +46,15 @@
                                 name="password_confirmation" required />
             </div>
 
+            {{-- User type --}}
+            <div class="mt-4">
+                <x-label for="usertype" :value="__('User-type')" />
+                <select name="user_type" class="block mt-1 w-full" id="usertype">
+                    <option value="" selected disabled>User type</option>
+                    <option value="vendor">Vendor</option>
+                    <option value="general">General user</option>
+                  </select>
+            </div>
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
                     {{ __('Already registered?') }}

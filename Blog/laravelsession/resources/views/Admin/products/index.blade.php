@@ -3,6 +3,8 @@
         <div class="container">
           <div class="az-content-body">
               <h4><a href="/admin/products/create">Create Products</a></h4>
+               <p>User : {{Auth::user()->name}}</p>
+               <p>Role :{{Auth::user()->user_type}}</p>
                    <table>
                        <tr>
                            <th>Id</th>

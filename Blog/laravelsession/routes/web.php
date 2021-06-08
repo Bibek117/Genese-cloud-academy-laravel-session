@@ -145,6 +145,8 @@ require __DIR__.'/auth.php';
 
 //products route
  Route::get('/',[ProductpageController::class,'index']);
+ Route::get('/contact',[ProductpageController::class,'contact'])->name('contact');
+ Route::get('/checkout',[ProductpageController::class,'checkout'])->name('checkout');
  Route::get('/category/{category}',[ProductpageController::class,'cat']);
  Route::get('/product/{prod}',[ProductpageController::class,'prodetails']);
 
@@ -153,7 +155,7 @@ require __DIR__.'/auth.php';
 //adding prefix admin adds /admin/ to all prefix of routes
 //also name can we added and will be applied to all prefixes
 //  Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function (){
- Route::middleware(['auth'])->prefix('admin')->group(function (){
+ Route::middleware(['auth','adminvendor'])->prefix('admin')->group(function (){
       Route::get('products',[App\Http\Controllers\Admin\ProductsController::class,'index'])->name('product_list');  //name for route
       Route::get('products/create',[App\Http\Controllers\Admin\ProductsController::class,'create'])-> name('product_create');
       Route::post('products/store',[App\Http\Controllers\Admin\ProductsController::class,'store']);
@@ -168,7 +170,7 @@ require __DIR__.'/auth.php';
  //except
  //Route::resource('photos', PhotoController::class)->except(['create', 'store', 'update', 'destroy']);
 
-Route::get('/admin/dashboard',[App\Http\Controllers\Admin\DashboardController::class,'index'])->name('admin_dashboard')->middleware('auth');
+Route::get('/admin/dashboard',[App\Http\Controllers\Admin\DashboardController::class,'index'])->name('admin_dashboard')->middleware(['auth','adminvendor']);
 
 Route::get('search',[App\Http\Controllers\SearchController::class,'search'])->name('search');
 

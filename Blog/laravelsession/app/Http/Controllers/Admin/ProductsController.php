@@ -8,6 +8,8 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\product;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Illuminate\Support\Facades\Redis;
@@ -21,8 +23,14 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = product::latest()->get();
+        if(Auth::user()->user_type === 'admin'){
+            $products = product::latest()->get();
         return view('Admin.products.index',['products'=>$products]);
+        }else{
+            $products = product::whereUserId(Auth::user()->id)->latest()->get();
+            return view('Admin.products.index',['products'=>$products]);
+        }
+        
     }
 
     /**
@@ -73,6 +81,7 @@ class ProductsController extends Controller
         }
         $product->price = $request->input('price');
         $product->category_id =$request->input('category_id');
+        $product->user_id = Auth::user()->id;
         if($product->save()){
             // return redirect('/admin/products');  //->route('/admin/products');
             return redirect()->route('product_list');
@@ -112,7 +121,7 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StorePostRequest $request, $id)
+    public function update(StorePostRequest $request, product $product)
     {
         //way 1 to update
         // $data = $this->validate($request,[
@@ -140,7 +149,23 @@ class ProductsController extends Controller
         //     'product_desc.required'=>'Please give a few lines description'
         // ]);
 
-        $product = product::find($id);   //$request brings the new value
+
+        //using gate allows function to authorize
+        // if(!Gate::allows('update-product',$product)){
+        //     abort(403);
+        // }
+        
+        //using gate authorize to authorize
+        //Gate::authorize('update-product',$product);
+
+        //using policiy
+        $this->authorize('update',$product);
+
+        //if $product is unknown here it searches for policiy bind with product model and implements update function
+        //$this->authorize('update',product::class);
+
+
+      //  $product = product::find($id);   //$request brings the new value
        $product->product_name = $request['product_name'];
        $product->product_desc = $request['product_desc'];
        $product->price = $request['price'];
@@ -157,6 +182,9 @@ class ProductsController extends Controller
      */
     public function destroy(product $product)
     {
+        if(!Gate::allows('delete-product',$product)){
+            abort(403);
+        }
         $product->delete();
       return redirect()->route('product_list');
     }

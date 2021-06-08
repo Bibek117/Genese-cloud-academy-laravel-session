@@ -12,6 +12,7 @@
                 </ul>
             </div>
         @endif 
+          @can('create',\App\Models\Category::class) 
                 <form  enctype="multipart/form-data" action="{{route('categories.store')}}" method="POST"  >
                     @csrf
                     {{-- <x-forms.input type="text" name="full_name"/> --}}
@@ -48,6 +49,9 @@
                     </select> --}}
                     <input class="btn btn-primary" type="submit" value="submit" name="submit">
                 </form>
+                @else
+                <h4>You are unauthorized</h4>
+                @endcan
             </div>
         </div>
     </div>

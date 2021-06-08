@@ -2,6 +2,7 @@
     <div class="az-content az-content-dashboard">
         <div class="container">
           <div class="az-content-body">
+              @can('update',\App\Models\Category::class)
               <h4><a href="/admin/products/create">Create Products</a></h4>
                    <table >
                        <tr>
@@ -26,6 +27,9 @@
                         </tr>
                        @endforeach  
                    </table>
+                   @else
+                   <h4>You are unauthorized</h4>
+                   @endcan
                 </div>
             </div>
         </div>

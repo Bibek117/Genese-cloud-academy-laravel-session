@@ -70,7 +70,7 @@
 						<div class="top-left">
 							<ul class="list-main">
 								<li><i class="ti-headphone-alt"></i> +060 (800) 801-582</li>
-								<li><i class="ti-email"></i> support@shophub.com</li>
+								<li><i class="ti-email"></i> cello@gamil.com</li>
 							</ul>
 						</div>
 						<!--/ End Top Left -->
@@ -83,7 +83,7 @@
 								<li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li>
 								@if (Route::has('login'))
 									@auth
-									<li><i class="ti-user"></i> <a href="{{ url('/admin/dashboard') }}">My account</a></li>
+									<li><i class="ti-arrow-right"></i> <a href="{{ url('/admin/dashboard') }}">Dash board</a></li>
 									@else
 									<li><i class="ti-power-off"></i><a href="{{ route('login') }}">Login</a></li>
 							     	 @if (Route::has('register'))
@@ -105,7 +105,7 @@
 					<div class="col-lg-2 col-md-2 col-12">
 						<!-- Logo -->
 						<div class="logo">
-							<a href="index.html"><img src="images/logo.png" alt="logo"></a>
+							<a href="index.html"><img src="/images/logo.png" alt="logo"></a>
 						</div>
 						<!--/ End Logo -->
 						<!-- Search Form -->
@@ -259,7 +259,7 @@
 													<li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
 														<ul class="dropdown">
 															<li><a href="shop-grid.html">Shop Grid</a></li>
-															<li><a href="cart.html">Cart</a></li>
+															<li><a href="{{route('order.index')}}">Cart</a></li>
 															<li><a href="checkout.html">Checkout</a></li>
 														</ul>
 													</li>

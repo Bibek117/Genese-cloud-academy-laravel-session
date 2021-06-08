@@ -83,7 +83,14 @@
 								<li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li>
 								@if (Route::has('login'))
 								@auth
-								<li><i class="ti-user"></i> <a href="{{ url('/admin/dashboard') }}">My account</a></li>
+								<li><i class="ti-arrow-right"></i> <a href="{{ url('/admin/dashboard') }}">Dash board</a></li>
+								<li>
+									<form method="post" action="{{ route('logout') }}">
+									@csrf 
+									<i class="ti-power-off"></i> <a href="#" onclick="event.preventDefault();
+									this.closest('form').submit();">Sign Out</a>
+								    </form>
+							    </li>
 								@else
 								<li><i class="ti-power-off"></i><a href="{{ route('login') }}">Login</a></li>
 								  @if (Route::has('register'))

@@ -12,6 +12,8 @@
                 </ul>
             </div>
         @endif  --}}
+
+           {{-- @can('create',App\Models\product::class); --}}
                 <form  enctype="multipart/form-data" action="/admin/products/store" method="POST"  >
                     @csrf
                     {{-- <x-forms.input type="text" name="full_name"/> --}}
@@ -49,7 +51,7 @@
                             <option value="{{$category->id}}">{{$category->name}}</option>
                         @endforeach
                     </select> --}}
-                    <input class="btn btn-primary" type="submit" value="submit" name="submit">
+                    <input class="btn btn-primary" type="submit" value="submit" name="submit"> 
                 </form>
             </div>
         </div>

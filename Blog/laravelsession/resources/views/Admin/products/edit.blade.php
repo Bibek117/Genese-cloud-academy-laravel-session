@@ -13,7 +13,15 @@
                   </div>
                   
               @endif
-                <form style="padding: 10px;border:2px solid black;" action="{{ route('product_update',$product->id)}}" method="post">
+              {{-- @can('update-product', Model::class) --}}
+               
+              {{-- using gate
+              @can('update-product', $product) --}}
+
+
+              {{-- using policy --}}
+              @can('update', $product)
+                  <form style="padding: 10px;border:2px solid black;" action="{{ route('product_update',$product->id)}}" method="post">
                     @csrf
                     {{-- <x-forms.input type="text" name="full_name"/> --}}
                     {{-- <input type="hidden" _method="put"> --}}
@@ -35,6 +43,9 @@
                     </select> --}}
                     <input class="btn btn-primary" type="submit" value="Update" name="submit">
                 </form>
+                @else
+                <h4>You are not authorized to edit this product</h4>
+              @endcan 
             </div>
         </div>
     </div>

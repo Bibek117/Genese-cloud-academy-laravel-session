@@ -16,6 +16,7 @@ class product extends Model
         'image',
         'price',
         'category_id',
+        'user_id',
     ];
     protected $attributes = [
         'image' => "",

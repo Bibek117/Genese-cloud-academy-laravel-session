@@ -602,7 +602,7 @@
   'session' => 
   array (
     'driver' => 'file',
-    'lifetime' => '120',
+    'lifetime' => '1440',
     'expire_on_close' => false,
     'encrypt' => false,
     'files' => 'C:\\xampp\\htdocs\\Genese-cloud-academy-laravel-session\\Blog\\laravelsession\\storage\\framework/sessions',

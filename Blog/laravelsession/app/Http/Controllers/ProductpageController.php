@@ -23,5 +23,13 @@ class ProductpageController extends Controller
     public function prodetails(product $prod){
         return view('product1',['products'=>$prod]);
     }
+
+    public function checkout(){
+        return view('checkout');
+    }
+
+    public function contact(){
+        return view('contact');
+    }
 }
 
