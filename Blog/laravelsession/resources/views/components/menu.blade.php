@@ -1,5 +1,17 @@
 <div class="all-category">
+    @php
+        $categories = categories_list();
+    @endphp
     <h3 class="cat-heading"><i class="fa fa-bars" aria-hidden="true"></i>CATEGORIES</h3>
+    <ul class="main-category">
+        @foreach ($categories as $category)
+            <li><a href="/category/{{$category->id}}">{{$category->name}}</a></li>
+        @endforeach
+        {{-- /product/{{$category->products->id}} --}}
+    </ul>
+
+
+    {{-- <h3 class="cat-heading"><i class="fa fa-bars" aria-hidden="true"></i>CATEGORIES</h3>
     <ul class="main-category">
         <li><a href="#">New Arrivals <i class="fa fa-angle-right" aria-hidden="true"></i></a>
             <ul class="sub-category">
@@ -62,5 +74,5 @@
         <li><a href="#">ladies</a></li>
         <li><a href="#">westrn dress</a></li>
         <li><a href="#">denim </a></li>
-    </ul>
+    </ul> --}}
 </div>

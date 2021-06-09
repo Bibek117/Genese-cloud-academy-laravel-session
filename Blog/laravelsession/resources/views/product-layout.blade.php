@@ -105,7 +105,7 @@
 					<div class="col-lg-2 col-md-2 col-12">
 						<!-- Logo -->
 						<div class="logo">
-							<a href="index.html"><img src="/images/logo.png" alt="logo"></a>
+							<a href="{{'/'}}"><img src="/images/logo.png" alt="logo"></a>
 						</div>
 						<!--/ End Logo -->
 						<!-- Search Form -->
@@ -260,7 +260,7 @@
 														<ul class="dropdown">
 															<li><a href="shop-grid.html">Shop Grid</a></li>
 															<li><a href="{{route('order.index')}}">Cart</a></li>
-															<li><a href="checkout.html">Checkout</a></li>
+															<li><a href="{{route('checkout')}}">Checkout</a></li>
 														</ul>
 													</li>
 													<li><a href="#">Pages</a></li>									
@@ -269,7 +269,7 @@
 															<li><a href="blog-single-sidebar.html">Blog Single Sidebar</a></li>
 														</ul>
 													</li>
-													<li><a href="contact.html">Contact Us</a></li>
+													<li><a href="{{route('contact')}}">Contact Us</a></li>
 												</ul>
 										</div>
 									</div>
@@ -336,7 +336,7 @@
 								<li><a href="#">About Us</a></li>
 								<li><a href="#">Faq</a></li>
 								<li><a href="#">Terms & Conditions</a></li>
-								<li><a href="#">Contact Us</a></li>
+								<li><a href="{{route('contact')}}">Contact Us</a></li>
 								<li><a href="#">Help</a></li>
 							</ul>
 						</div>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use phpDocumentor\Reflection\Types\Null_;
 
 class OrderController extends Controller
 {
@@ -15,14 +17,19 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $order_id = session('order_id',0);
-        //return $order_id;
-         //$order = Order::find($order_id);
-        $order_item = OrderItem::whereOrderId($order_id)->get();
-        if(count($order_item) >= 1){
+        $user_id = Auth::user()->id;
+        
+         //$order_id = request()->session()->get('order_id', '0');
+         //$order_id = session('order_id',0);
+        $order = Order::whereUserId($user_id)->first();
+        if($order == null){
+             return view('emptycart');
+        }
+        $order_item = OrderItem::whereOrderId($order->id)->get();
+        if($order_item){
                return view('cart',['orderitem'=>$order_item]);
         }else{
-            return view('emptycart');
+           
         }
      
         // return view('cart',['orderitem'=>$order_item,'order'=>$order]);

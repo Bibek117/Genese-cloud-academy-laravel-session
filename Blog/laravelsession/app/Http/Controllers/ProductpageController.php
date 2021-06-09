@@ -31,5 +31,8 @@ class ProductpageController extends Controller
     public function contact(){
         return view('contact');
     }
+    public function grid(){
+        return view('shop-grid');
+    }
 }
 

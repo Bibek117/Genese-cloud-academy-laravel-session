@@ -15,16 +15,18 @@
 	<!-- Slider Area -->
 	<section class="hero-slider">
 		<!-- Single Slider -->
-		<div class="single-slider">
+		@php
+			$image = image_crop('banner.png',1900,700); 
+		@endphp
+		<div class="single-slider" style="background-image: url({{$image}});">
 			<div class="container">
 				<div class="row no-gutters">
 					<div class="col-lg-9 offset-lg-3 col-12">
 						<div class="text-inner">
 							<div class="row">
 								<div class="col-lg-7 col-12">
-									<div class="hero-text">
-										<h1><span>UP TO 50% OFF </span>Shirt For Man</h1>
-										<p>Maboriosam in a nesciung eget magnae <br> dapibus disting tloctio in the find it pereri <br> odiy maboriosm.</p>
+									<div class="hero-text">	
+										<h1><span>UP TO 30% OFF </span>ALL ELECTRONIC DEVICES IN ONE</h1>
 										<div class="button">
 											<a href="#" class="btn">Shop Now!</a>
 										</div>
@@ -143,7 +145,7 @@
 																</form>
 															</div>
 														</div>
-													</div>
+													</div> 
 													<div class="product-content">
 														<h3><a href="/product/{{$product->id}}">{{$product['product_name']}}</a></h3>
 														<div class="product-price">
