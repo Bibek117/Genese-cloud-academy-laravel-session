@@ -79,7 +79,7 @@ class OrderItemController extends Controller
                 $order->user_id = Auth::id();
                 $order->order_status = 'cart';
                 $order->sub_total = 0;
-                $order->discount = 0;
+                $order->discount = 50;
                 $order->shipping_price = 0;
                 $order->total_price = 0;
                 $order->shipping_address ='';
@@ -198,7 +198,7 @@ class OrderItemController extends Controller
          $item = OrderItem::find($id);
 
          $item->order->sub_total -=$item->total;
-         $item->order->total_price -=$item->total; 
+         $item->order->total_price =$item->order->total_price - $item->total +$item->order->discount ; 
          $item->order->save();
          $item->delete();
          return redirect()->route('order.index');

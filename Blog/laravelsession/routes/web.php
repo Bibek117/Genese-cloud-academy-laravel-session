@@ -146,12 +146,16 @@ require __DIR__.'/auth.php';
 //products route
  Route::get('/',[ProductpageController::class,'index']);
  Route::get('/contact',[ProductpageController::class,'contact'])->name('contact');
- Route::get('/checkout',[ProductpageController::class,'checkout'])->name('checkout');
  Route::get('/shop-grid',[ProductpageController::class,'grid'])->name('shop-grid');
  Route::get('/category/{category}',[ProductpageController::class,'cat']);
  Route::get('/product/{prod}',[ProductpageController::class,'prodetails']);
 
+//genneraluser
 
+Route::middleware('auth')->group(function(){
+ Route::get('/checkout',[App\Http\Controllers\OrderController::class,'checkout'])->name('checkout');
+ Route::post('/checkout/store',[App\Http\Controllers\CheckoutDetailController::class,'store'])->name('checkout_store');
+});
  //admin routing
 //adding prefix admin adds /admin/ to all prefix of routes
 //also name can we added and will be applied to all prefixes

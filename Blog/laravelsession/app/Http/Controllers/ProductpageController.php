@@ -11,12 +11,15 @@ class ProductpageController extends Controller
     //homepage
     public function index(){
         $product_list = product::latest()->get();
-        return view('homepage',['productpass'=>$product_list]);
+        $categories = category::latest()->get();
+        return view('homepage',['productpass'=>$product_list,'categories'=>$categories]);
     }
     //category page
     public function cat(Category $category){  //id of catgory is passed
-        $product = $category->products;        //all products having id as foreign key same is passed
-        return view('category',['products'=>$product,'category'=>$category]);  //id of category and products belonging to that category is passeed
+        $products = $category->products; 
+        $all =Category::all();       //all products having id as foreign key same is passed
+       // return view('category',['products'=>$product,'category'=>$category,'all'=>$all]);  //id of category and products belonging to that category is passeed
+        return view('category',compact('products','category','all'));
     }
 
     //products details
@@ -24,9 +27,9 @@ class ProductpageController extends Controller
         return view('product1',['products'=>$prod]);
     }
 
-    public function checkout(){
-        return view('checkout');
-    }
+    // public function checkout(){
+    //     return view('checkout');
+    // }
 
     public function contact(){
         return view('contact');

@@ -103,12 +103,10 @@
 							<div class="nav-main">
 								<!-- Tab Nav -->
 								<ul class="nav nav-tabs" id="myTab" role="tablist">
-									<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#man" role="tab">Man</a></li>
-									<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#women" role="tab">Woman</a></li>
-									<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#kids" role="tab">Kids</a></li>
-									<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#accessories" role="tab">Accessories</a></li>
-									<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#essential" role="tab">Essential</a></li>
-									<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#prices" role="tab">Prices</a></li>
+								@foreach ($categories as $category)
+									<li class="nav-item"><a  href="/category/{{$category->id}}" role="tab">{{$category->name}}</a></li>
+									{{-- <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="/category/{{$category->id}}" role="tab">{{$category->name}}</a></li> --}}
+								@endforeach
 								</ul>
 								<!--/ End Tab Nav -->
 							</div>
@@ -162,7 +160,7 @@
 									</div>
 								</div>
 								<!--/ End Single Tab -->
-								<!-- Start Single Tab -->
+								{{-- <!-- Start Single Tab -->
 								<div class="tab-pane fade" id="women" role="tabpanel">
 									<div class="tab-single">
 										<div class="row">
@@ -1261,7 +1259,7 @@
 										</div>
 									</div>
 								</div>
-								<!--/ End Single Tab -->
+								<!--/ End Single Tab --> --}}
 							</div>
 						</div>
 					</div>
@@ -1270,7 +1268,7 @@
     </div>
 	<!-- End Product Area -->
 	
-	<!-- Start Midium Banner  -->
+	{{-- <!-- Start Midium Banner  -->
 	<section class="midium-banner">
 		<div class="container">
 			<div class="row">
@@ -1301,7 +1299,7 @@
 			</div>
 		</div>
 	</section>
-	<!-- End Midium Banner -->
+	<!-- End Midium Banner --> --}}
 	
 	<!-- Start Most Popular -->
 	<div class="product-area most-popular section">
@@ -1658,7 +1656,7 @@
 	<!-- /End Cowndown Area -->
 	
 	<!-- Start Shop Blog  -->
-	<section class="shop-blog section">
+	{{-- <section class="shop-blog section">
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
@@ -1706,53 +1704,8 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> --}}
 	<!-- End Shop Blog  -->
-	
-	<!-- Start Shop Services Area -->
-	<section class="shop-services section home">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3 col-md-6 col-12">
-					<!-- Start Single Service -->
-					<div class="single-service">
-						<i class="ti-rocket"></i>
-						<h4>Free shiping</h4>
-						<p>Orders over $100</p>
-					</div>
-					<!-- End Single Service -->
-				</div>
-				<div class="col-lg-3 col-md-6 col-12">
-					<!-- Start Single Service -->
-					<div class="single-service">
-						<i class="ti-reload"></i>
-						<h4>Free Return</h4>
-						<p>Within 30 days returns</p>
-					</div>
-					<!-- End Single Service -->
-				</div>
-				<div class="col-lg-3 col-md-6 col-12">
-					<!-- Start Single Service -->
-					<div class="single-service">
-						<i class="ti-lock"></i>
-						<h4>Sucure Payment</h4>
-						<p>100% secure payment</p>
-					</div>
-					<!-- End Single Service -->
-				</div>
-				<div class="col-lg-3 col-md-6 col-12">
-					<!-- Start Single Service -->
-					<div class="single-service">
-						<i class="ti-tag"></i>
-						<h4>Best Peice</h4>
-						<p>Guaranteed price</p>
-					</div>
-					<!-- End Single Service -->
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- End Shop Services Area -->
 	
 	<!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">

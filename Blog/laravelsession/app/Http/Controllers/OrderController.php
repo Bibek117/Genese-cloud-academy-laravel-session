@@ -26,10 +26,10 @@ class OrderController extends Controller
              return view('emptycart');
         }
         $order_item = OrderItem::whereOrderId($order->id)->get();
-        if($order_item){
+        if($order_item != "[]"){
                return view('cart',['orderitem'=>$order_item]);
         }else{
-           
+            return view('emptycart');
         }
      
         // return view('cart',['orderitem'=>$order_item,'order'=>$order]);
@@ -101,4 +101,12 @@ class OrderController extends Controller
     {
        
     }
+    public function checkout(){
+
+        $key = Auth::user()->id;
+        $order = Order::whereUserId($key)->first();
+        //return $order;
+        return view('checkout',compact('order'));
+    }
+
 }

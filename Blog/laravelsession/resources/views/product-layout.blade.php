@@ -69,8 +69,8 @@
 						<!-- Top Left -->
 						<div class="top-left">
 							<ul class="list-main">
-								<li><i class="ti-headphone-alt"></i> +060 (800) 801-582</li>
-								<li><i class="ti-email"></i> cello@gamil.com</li>
+								<li><i class="ti-headphone-alt"></i> +997 9842799412</li>
+								<li><i class="ti-email"></i> limbustores@gamil.com</li>
 							</ul>
 						</div>
 						<!--/ End Top Left -->
@@ -79,8 +79,8 @@
 						<!-- Top Right -->
 						<div class="right-content">
 							<ul class="list-main">
-								<li><i class="ti-location-pin"></i> Store location</li>
-								<li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li>
+								{{-- <li><i class="ti-location-pin"></i> Store location</li>
+								<li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li> --}}
 								@if (Route::has('login'))
 									@auth
 									<li><i class="ti-arrow-right"></i> <a href="{{ url('/admin/dashboard') }}">Dash board</a></li>
@@ -289,6 +289,50 @@
    @yield('content')
 
 
+   	<!-- Start Shop Services Area  -->
+		<section class="shop-services section home">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-3 col-md-6 col-12">
+						<!-- Start Single Service -->
+						<div class="single-service">
+							<i class="ti-rocket"></i>
+							<h4>Free shiping</h4>
+							<p>Orders over 50000</p>
+						</div>
+						<!-- End Single Service -->
+					</div>
+					<div class="col-lg-3 col-md-6 col-12">
+						<!-- Start Single Service -->
+						<div class="single-service">
+							<i class="ti-reload"></i>
+							<h4>Free Return</h4>
+							<p>Within 30 days returns</p>
+						</div>
+						<!-- End Single Service -->
+					</div>
+					<div class="col-lg-3 col-md-6 col-12">
+						<!-- Start Single Service -->
+						<div class="single-service">
+							<i class="ti-lock"></i>
+							<h4>Sucure Payment</h4>
+							<p>100% secure payment</p>
+						</div>
+						<!-- End Single Service -->
+					</div>
+					<div class="col-lg-3 col-md-6 col-12">
+						<!-- Start Single Service -->
+						<div class="single-service">
+							<i class="ti-tag"></i>
+							<h4>Best Peice</h4>
+							<p>Guaranteed price</p>
+						</div>
+						<!-- End Single Service -->
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End Shop Services -->
      	<!-- Start Shop Newsletter  -->
 		<section class="shop-newsletter section">
 			<div class="container">
@@ -363,10 +407,10 @@
 							<!-- Single Widget -->
 							<div class="contact">
 								<ul>
-									<li>NO. 342 - London Oxford Street.</li>
-									<li>012 United Kingdom.</li>
-									<li>info@eshop.com</li>
-									<li>+032 3456 7890</li>
+									<li>Bhaisepati Lalitpur</li>
+									<li>Nepal</li>
+									<li>limbustore@gmail.com</li>
+									<li>+977 9842799412</li>
 								</ul>
 							</div>
 							<!-- End Single Widget -->
@@ -389,7 +433,7 @@
 					<div class="row">
 						<div class="col-lg-6 col-12">
 							<div class="left">
-								<p>Copyright © 2020 <a href="http://www.wpthemesgrid.com" target="_blank">Wpthemesgrid</a>  -  All Rights Reserved.</p>
+								 <p>Copyright © 2020 {{--<a href="http://www.wpthemesgrid.com" target="_blank">Wpthemesgrid</a> --}} -  All Rights Reserved.</p>
 							</div>
 						</div>
 						<div class="col-lg-6 col-12">

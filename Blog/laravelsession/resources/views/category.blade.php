@@ -9,7 +9,7 @@
 					<div class="col-12">
 						<div class="bread-inner">
 							<ul class="bread-list">
-								<li><a href="index1.html">Home<i class="ti-arrow-right"></i></a></li>
+								<li><a href="/">Home<i class="ti-arrow-right"></i></a></li>
 								<li class="active"><a href="blog-single.html">Shop Grid</a></li>
 							</ul>
 						</div>
@@ -23,7 +23,7 @@
 		<section class="product-area shop-sidebar shop section">
 			<div class="container">
 				<div class="row">
-					@include('include.sidebar')
+					@include('include.sidebar',$category)
 					<div class="col-lg-9 col-md-8 col-12">
 						<div class="row">
 							<div class="col-12">
@@ -72,7 +72,12 @@
 												<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
 											</div>
 											<div class="product-action-2">
-												<a title="Add to cart" href="#">Add to cart</a>
+												<form action="{{route('cart.store')}}" method="POST">
+													@csrf
+												  <input type="hidden" name="product_id" value="{{$product->id}}">
+												  <input type="hidden" name="quantity" value="1">
+												  <a title="Add to cart" href="#" onclick="event.preventDefault(); this.closest('form').submit();">Add to cart</a>
+												</form>
 											</div>
 										</div>
 									</div>
@@ -87,7 +92,7 @@
 							</div> 
                             @endforeach
 						</div>
-                        <a href="/home-page" style="color:red">Back to homepage</a>
+                        <a href="/" style="color:red">Back to homepage</a>
 					</div>
 				</div>
 			</div>
